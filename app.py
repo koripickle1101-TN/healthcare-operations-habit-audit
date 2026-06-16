@@ -21,50 +21,75 @@ st.markdown(
     h1, h2, h3, h4, h5, h6, p, div, span, label {{
         color: {BLACK};
     }}
+    h1 {{
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+    }}
+    h2 {{
+        letter-spacing: -0.03em;
+    }}
     .brand-banner {{
         border: 2px solid {TENNESSEE_ORANGE};
-        padding: 24px;
+        padding: 26px;
         border-radius: 0px;
         margin-bottom: 24px;
         background-color: {WHITE};
     }}
     .brand-label {{
         color: {TENNESSEE_ORANGE};
-        font-weight: 700;
-        letter-spacing: 0.04em;
+        font-weight: 800;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
-        font-size: 0.85rem;
-        margin-bottom: 10px;
+        font-size: 0.84rem;
+        margin-bottom: 14px;
+    }}
+    .disclaimer-box {{
+        border: 1.5px solid {TENNESSEE_ORANGE};
+        border-left: 8px solid {TENNESSEE_ORANGE};
+        padding: 18px;
+        background-color: {WHITE};
+        margin: 20px 0 34px 0;
+        font-size: 1rem;
+        line-height: 1.55;
     }}
     .metric-card {{
         border: 1.5px solid {TENNESSEE_ORANGE};
         padding: 18px;
         background-color: {WHITE};
-        min-height: 120px;
-        margin-bottom: 12px;
+        min-height: 126px;
+        margin-bottom: 14px;
     }}
     .metric-label {{
         color: {TENNESSEE_ORANGE};
-        font-weight: 700;
+        font-weight: 800;
         font-size: 0.82rem;
         text-transform: uppercase;
+        letter-spacing: 0.03em;
     }}
     .metric-value {{
         color: {BLACK};
-        font-size: 2rem;
-        font-weight: 800;
-        margin-top: 6px;
+        font-size: 1.85rem;
+        font-weight: 850;
+        margin-top: 8px;
+        line-height: 1.15;
     }}
     .risk-box {{
-        border-left: 6px solid {TENNESSEE_ORANGE};
-        padding: 18px;
+        border-left: 8px solid {TENNESSEE_ORANGE};
+        padding: 18px 18px 18px 24px;
         background-color: {WHITE};
         margin-top: 12px;
-        margin-bottom: 18px;
+        margin-bottom: 24px;
     }}
     .small-note {{
         font-size: 0.9rem;
         line-height: 1.5;
+    }}
+    div[data-testid="stSlider"] > div > div > div > div {{
+        background-color: {TENNESSEE_ORANGE} !important;
+    }}
+    div[data-testid="stSlider"] [role="slider"] {{
+        background-color: {TENNESSEE_ORANGE} !important;
+        border-color: {TENNESSEE_ORANGE} !important;
     }}
     </style>
     """,
@@ -118,15 +143,20 @@ st.markdown(
         <div class="brand-label">Healthcare Operations Intelligence Engine™</div>
         <h1>Healthcare Operations Habit Audit™</h1>
         <p>A simulated workflow risk assessment for patient access, prior authorization, revenue cycle, and denial prevention.</p>
-        <p><strong>Created by Kori Pickle</strong><br>BSHA Candidate, University of Phoenix</p>
+        <p>Created by Kori Pickle<br>BSHA Candidate, University of Phoenix</p>
         <p><em>Where healthcare workflows break before patients, staff, and revenue feel the impact.</em></p>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-st.warning(
-    "Simulated educational portfolio project only. No PHI, real patient data, payer data, employer data, real claims data, or real healthcare organization data is used."
+st.markdown(
+    """
+    <div class="disclaimer-box">
+        Simulated educational portfolio project only. No PHI, real patient data, payer data, employer data, real claims data, or real healthcare organization data is used.
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
 st.markdown("## Simulated Scenario")
@@ -225,7 +255,7 @@ for category in lowest_categories:
         <div class="risk-box">
             <h3>{category}</h3>
             <p>{categories[category]['finding']}</p>
-            <p><strong>Recommended Action:</strong> {categories[category]['action']}</p>
+            <p>Recommended Action: {categories[category]['action']}</p>
         </div>
         """,
         unsafe_allow_html=True
