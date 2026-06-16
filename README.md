@@ -1,36 +1,56 @@
- Healthcare Operations Habit Audit™
+# Healthcare Operations Habit Audit™
 
 A simulated workflow risk assessment for patient access, prior authorization, revenue cycle, and denial prevention.
 
 Created by Kori Pickle  
 BSHA Candidate, University of Phoenix  
 Healthcare Operations Intelligence Engine™  
-*Where healthcare workflows break before patients, staff, and revenue feel the impact.*
+Where healthcare workflows break before patients, staff, and revenue feel the impact.
 
+---
 
+## Brand Identity
 
- Project Overview
+Healthcare Operations Intelligence Engine™
+
+Visual Style
+
+| Brand Element | Standard |
+|---|---|
+| Background | White |
+| Typography | Black |
+| Accent Color | Tennessee Orange |
+| Tennessee Orange Hex | #FF8200 |
+| Style | Premium healthcare consulting |
+| Design Direction | Clean, professional, recruiter-facing |
+| Avoid | Blue, teal, bronze, gold, gray-heavy styling, and generic healthcare colors |
+
+This project is designed to look like a clean healthcare operations consulting asset: simple, structured, direct, and focused on workflow risk.
+
+---
+
+## Project Overview
 
 The Healthcare Operations Habit Audit™ is a simulated healthcare operations portfolio project designed to evaluate daily operational habits that can reduce workflow risk before it becomes a patient access delay, prior authorization issue, documentation problem, denial risk, staff rework burden, or revenue cycle disruption.
 
 This project focuses on six operational habits:
 
-1. Documentation Accuracy  
-2. Data Integrity  
-3. Patient-Centered Workflow  
-4. Compliance Readiness  
-5. Cross-Functional Communication  
-6. Continuous Improvement  
+1. Documentation Accuracy
+2. Data Integrity
+3. Patient-Centered Workflow
+4. Compliance Readiness
+5. Cross-Functional Communication
+6. Continuous Improvement
 
 The purpose of this project is to demonstrate healthcare operations thinking, workflow risk analysis, denial prevention awareness, documentation review, and dashboard design using simulated no-PHI data.
 
+---
 
+## No-PHI Disclaimer
 
- No-PHI Disclaimer
+This is a simulated educational portfolio project created by Kori Pickle, a BSHA candidate at the University of Phoenix.
 
-This is a simulated educational portfolio project created by **Kori Pickle, a BSHA candidate at the University of Phoenix.
-
-This project does **not** use:
+This project does not use:
 
 - Real patient data
 - Protected health information, or PHI
@@ -41,9 +61,9 @@ This project does **not** use:
 
 All examples, scores, scenarios, findings, and recommendations are simulated for educational and portfolio purposes only.
 
+---
 
-
- Simulated Workflow Problem
+## Simulated Workflow Problem
 
 In this simulated scenario, a healthcare organization is experiencing increased authorization delays, eligibility rework, patient confusion, and preventable claim denials.
 
@@ -58,9 +78,9 @@ The simulated workflow issues include:
 - Scheduling, registration, authorization, clinical, and billing teams not always working from the same information
 - Recurring workflow failures not consistently reviewed or corrected
 
+---
 
-
- Audit Categories
+## Audit Categories
 
 | Category | What It Evaluates |
 |---|---|
@@ -71,23 +91,23 @@ The simulated workflow issues include:
 | Cross-Functional Communication | Whether departments are working from the same information |
 | Continuous Improvement | Whether recurring workflow failures are tracked and corrected |
 
+---
 
+## Scoring Methodology
 
- Scoring Methodology
-
-Each habit is scored on a 1–5 scale.
+Each habit is scored on a 1 to 5 scale.
 
 | Score | Meaning | Risk Level |
 |---:|---|---|
-| 1 | High risk / not reliable | Critical Risk |
+| 1 | High risk or not reliable | Critical Risk |
 | 2 | Weak process | High Risk |
 | 3 | Inconsistent process | Moderate Risk |
 | 4 | Mostly reliable | Low Risk |
 | 5 | Strong and repeatable process | Strong Practice |
 
+---
 
-
- Simulated Demo Scores
+## Simulated Demo Scores
 
 | Category | Score |
 |---|---:|
@@ -98,9 +118,9 @@ Each habit is scored on a 1–5 scale.
 | Cross-Functional Communication | 2 |
 | Continuous Improvement | 3 |
 
+---
 
-
- Dashboard Metrics
+## Dashboard Metrics
 
 The project dashboard includes:
 
@@ -117,13 +137,13 @@ Example:
 
 If the average habit score is 3.2, the Workflow Reliability Score is:
 
-3.2 × 20 = 64 / 100
+3.2 × 20 = 64 out of 100
 
 This creates a simple recruiter-friendly dashboard metric.
 
+---
 
-
- Key Simulated Findings
+## Key Simulated Findings
 
 The simulated audit shows that the highest-risk areas are:
 
@@ -144,9 +164,9 @@ Weak habits in these areas may create:
 - Documentation gaps
 - Claim readiness problems
 
+---
 
-
- 30-Day Improvement Plan
+## 30-Day Improvement Plan
 
 | Timeline | Action | Purpose |
 |---|---|---|
@@ -157,9 +177,9 @@ Weak habits in these areas may create:
 | Week 3 | Track repeated errors | Find patterns causing rework and denials |
 | Week 4 | Review progress and update workflow | Build continuous improvement habit |
 
+---
 
-
- Skills Demonstrated
+## Skills Demonstrated
 
 This simulated project demonstrates:
 
@@ -178,17 +198,17 @@ This simulated project demonstrates:
 - AI-supported workflow analysis
 - Patient-to-professional perspective
 
+---
 
-
- Student Credibility Statement
+## Student Credibility Statement
 
 I am a BSHA candidate at the University of Phoenix building healthcare operations credibility through coursework, simulated portfolio projects, patient-to-professional perspective, and practical study of patient access, prior authorization, revenue cycle, denial prevention, documentation workflow, quality improvement, and health informatics.
 
 This project does not represent formal healthcare employment experience. It is a student portfolio project designed to demonstrate how I think through healthcare workflow risk honestly and professionally.
 
+---
 
-
- Recruiter Summary
+## Recruiter Summary
 
 I created this simulated project to show how I think through healthcare operations problems before they become downstream revenue cycle, denial, patient access, or staff workload issues.
 
