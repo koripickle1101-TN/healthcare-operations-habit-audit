@@ -9,6 +9,14 @@ Where healthcare workflows break before patients, staff, and revenue feel the im
 
 ---
 
+## Live Streamlit App
+
+View the interactive dashboard here:
+
+https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/
+
+---
+
 ## Brand Identity
 
 Healthcare Operations Intelligence Engine™
