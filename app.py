@@ -2,9 +2,10 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="Healthcare Operations Habit Audit",
+    page_title="Healthcare Operations Habit Audit | Simulated | No PHI",
     page_icon="📊",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 TENNESSEE_ORANGE = "#FF8200"
@@ -91,6 +92,10 @@ st.markdown(
         background-color: {TENNESSEE_ORANGE} !important;
         border-color: {TENNESSEE_ORANGE} !important;
     }}
+    @media (max-width: 768px) {{
+        .brand-banner {{ padding: 16px; }}
+        .metric-value {{ font-size: 1.4rem; }}
+    }}
     </style>
     """,
     unsafe_allow_html=True
@@ -140,7 +145,7 @@ risk_mapping = {
 st.markdown(
     """
     <div class="brand-banner">
-        <div class="brand-label">Healthcare Operations Intelligence Engine™</div>
+        <div class="brand-label">Simulated KPI Dashboard · Synthetic Data · No PHI</div>
         <h1>Healthcare Operations Habit Audit™</h1>
         <p>A simulated workflow risk assessment for patient access, prior authorization, revenue cycle, and denial prevention.</p>
         <p>Created by Kori Pickle<br>BSHA Candidate, University of Phoenix</p>
@@ -153,7 +158,7 @@ st.markdown(
 st.markdown(
     """
     <div class="disclaimer-box">
-        Simulated educational portfolio project only. No PHI, real patient data, payer data, employer data, real claims data, or real healthcare organization data is used.
+        Simulated educational portfolio project only. No PHI, real patient data, payer data, employer data, real claims data, or real healthcare organization data is used. Scores are practice outputs, not employer results.
     </div>
     """,
     unsafe_allow_html=True
@@ -210,7 +215,7 @@ elif average_score < 5:
 else:
     overall_risk = "Strong Operational Habit Maturity"
 
-st.markdown("## Scoring Dashboard")
+st.markdown("## Simulated Scoring Dashboard")
 metric_cols = st.columns(3)
 metric_data = [
     ("Average Habit Score", f"{average_score} / 5"),
