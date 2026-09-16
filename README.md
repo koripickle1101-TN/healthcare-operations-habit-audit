@@ -1,123 +1,66 @@
 # Healthcare Operations Habit Audit™
 
-A simulated workflow risk assessment for patient access, prior authorization, revenue cycle, and denial prevention.
+I built the Healthcare Operations Habit Audit as a student-developed healthcare operations project to study a broader question than any single eligibility, authorization, or denial case: **what recurring day-to-day habits can make a workflow more reliable—or make the same problems keep coming back?**
 
-Created by Kori Pickle  
-BSHA Candidate, University of Phoenix  
-Healthcare Operations Intelligence Engine™  
-Where healthcare workflows break before patients, staff, and revenue feel the impact.
+As I work toward my Bachelor's of Science degree in Healthcare Administration at the University of Phoenix, I am learning that workflow problems are not always caused by one dramatic failure. Sometimes the risk builds through smaller patterns: information that is not verified consistently, documentation that is not ready for the next step, unclear handoffs, patients who are not sure what they need to do next, or recurring problems that are corrected case by case without being studied as a pattern.
 
----
+From the patient side, those internal habits can become very visible. They can mean another call, another request for information, a delayed authorization, a confusing bill, a rescheduled visit, or uncertainty about what happens next.
+
+This project gives me a way to practice looking at those patterns across the workflow instead of treating every problem as an isolated event.
 
 ## Live Streamlit App
 
-View the interactive dashboard here:
+[Open the Healthcare Operations Habit Audit](https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/)
 
-https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/
+## Why I Built This Project
 
----
+I do not have formal healthcare operations employment experience yet, so I use simulated projects to turn coursework and independent study into visible practice.
 
-## Brand Identity
+The other projects in my portfolio follow specific workflow problems:
 
-Healthcare Operations Intelligence Engine™
+- **EVIS** looks at eligibility and intake risk.
+- **PARCS** looks at prior authorization workflow risk, ownership, and escalation.
+- **DPIS** looks at upstream denial-prevention and claim-readiness risk.
+- **SBI** asks where the first cross-workflow control loss occurred.
 
-Visual Style
+The Habit Audit sits across all of them. It asks a different question:
 
-| Brand Element | Standard |
+> **What repeated operational habits may be making workflow risk more likely?**
+
+I built it to practice turning that question into a simple review structure that can be discussed, scored, compared, and connected to improvement ideas.
+
+## What the Audit Reviews
+
+The project uses six simulated review categories:
+
+| Category | What I am reviewing |
 |---|---|
-| Background | White |
-| Typography | Black |
-| Accent Color | Tennessee Orange |
-| Tennessee Orange Hex | #FF8200 |
-| Style | Premium healthcare consulting |
-| Design Direction | Clean, professional, recruiter-facing |
-| Avoid | Blue, teal, bronze, gold, gray-heavy styling, and generic healthcare colors |
+| Documentation Accuracy | Whether the information needed for the next step is clear and complete |
+| Data Integrity | Whether demographic, insurance, and workflow information is current and internally consistent |
+| Patient-Centered Workflow | Whether the patient has clear information about what is needed and what happens next |
+| Compliance Readiness | Whether authorization, referral, documentation, and payer requirements appear to have been reviewed before service |
+| Cross-Functional Communication | Whether status, ownership, next steps, and unresolved issues are carried across handoffs |
+| Continuous Improvement | Whether repeated workflow problems are being tracked and reviewed instead of corrected one case at a time |
 
-This project is designed to look like a clean healthcare operations consulting asset: simple, structured, direct, and focused on workflow risk.
+**Important boundary:** “Compliance Readiness” is an educational workflow-review label in this project. It is not a legal, regulatory, accreditation, or formal compliance determination.
 
----
+## How the Scoring Works
 
-## Project Overview
+Each category is scored from **1 to 5**:
 
-The Healthcare Operations Habit Audit™ is a simulated healthcare operations portfolio project designed to evaluate daily operational habits that can reduce workflow risk before it becomes a patient access delay, prior authorization issue, documentation problem, denial risk, staff rework burden, or revenue cycle disruption.
+| Score | Educational interpretation |
+|---:|---|
+| 1 | Critical modeled weakness |
+| 2 | High modeled workflow risk |
+| 3 | Inconsistent / moderate modeled risk |
+| 4 | Mostly reliable modeled practice |
+| 5 | Strong modeled practice |
 
-This project focuses on six operational habits:
+The Streamlit app then calculates several **student-designed indicators** from those inputs.
 
-1. Documentation Accuracy
-2. Data Integrity
-3. Patient-Centered Workflow
-4. Compliance Readiness
-5. Cross-Functional Communication
-6. Continuous Improvement
+For example, the default demo scores are:
 
-The purpose of this project is to demonstrate healthcare operations thinking, workflow risk analysis, denial prevention awareness, documentation review, and dashboard design using simulated no-PHI data.
-
----
-
-## No-PHI Disclaimer
-
-This is a simulated educational portfolio project created by Kori Pickle, a BSHA candidate at the University of Phoenix.
-
-This project does not use:
-
-- Real patient data
-- Protected health information, or PHI
-- Real payer data
-- Employer data
-- Real claims data
-- Real healthcare organization data
-
-All examples, scores, scenarios, findings, and recommendations are simulated for educational and portfolio purposes only.
-
----
-
-## Simulated Workflow Problem
-
-In this simulated scenario, a healthcare organization is experiencing increased authorization delays, eligibility rework, patient confusion, and preventable claim denials.
-
-The audit is designed to identify which daily operational habits may be contributing to downstream workflow risk.
-
-The simulated workflow issues include:
-
-- Appointment reasons not always clearly documented
-- Insurance information inconsistently verified before visits
-- Patients not always understanding what is needed before service
-- Authorization, referral, and documentation requirements not always checked early
-- Scheduling, registration, authorization, clinical, and billing teams not always working from the same information
-- Recurring workflow failures not consistently reviewed or corrected
-
----
-
-## Audit Categories
-
-| Category | What It Evaluates |
-|---|---|
-| Documentation Accuracy | Whether appointment reasons and service details are clearly documented before the visit |
-| Data Integrity | Whether insurance and workflow data are accurate, current, and verified |
-| Patient-Centered Workflow | Whether the patient understands what is needed before the visit |
-| Compliance Readiness | Whether authorization, referral, and documentation requirements are checked before service |
-| Cross-Functional Communication | Whether departments are working from the same information |
-| Continuous Improvement | Whether recurring workflow failures are tracked and corrected |
-
----
-
-## Scoring Methodology
-
-Each habit is scored on a 1 to 5 scale.
-
-| Score | Meaning | Risk Level |
-|---:|---|---|
-| 1 | High risk or not reliable | Critical Risk |
-| 2 | Weak process | High Risk |
-| 3 | Inconsistent process | Moderate Risk |
-| 4 | Mostly reliable | Low Risk |
-| 5 | Strong and repeatable process | Strong Practice |
-
----
-
-## Simulated Demo Scores
-
-| Category | Score |
+| Category | Default Demo Score |
 |---|---:|
 | Documentation Accuracy | 3 |
 | Data Integrity | 2 |
@@ -126,100 +69,85 @@ Each habit is scored on a 1 to 5 scale.
 | Cross-Functional Communication | 2 |
 | Continuous Improvement | 3 |
 
----
+With those defaults:
 
-## Dashboard Metrics
+- Average habit score = **2.5 / 5**
+- Modeled workflow practice score = **50 / 100**
+- Denial-prevention practice indicator = **2.25 / 5**
+- Patient-centered workflow indicator = **2.5 / 5**
 
-The project dashboard includes:
+These are **not validated healthcare measures or benchmarks**. They are simple educational calculations I created so I could practice turning qualitative workflow observations into a consistent review structure.
 
-- Average Habit Score
-- Highest Risk Category
-- Workflow Reliability Score
-- Denial Prevention Readiness
-- Patient Friction Risk
-- Improvement Priority
-- Risk findings by category
-- 30-day improvement plan
+## What I Am Practicing
 
-Example:
+This project helps me practice:
 
-If the average habit score is 3.2, the Workflow Reliability Score is:
+- looking for repeated workflow patterns rather than only one-time errors,
+- connecting documentation and data quality to downstream work,
+- thinking about patient communication as part of operational reliability,
+- reviewing handoffs for ownership and next-step clarity,
+- identifying areas that may deserve closer human review,
+- creating a simple scoring model,
+- translating findings into an improvement plan,
+- presenting simulated workflow information in a dashboard,
+- and separating educational modeling from real-world performance claims.
 
-3.2 × 20 = 64 out of 100
+## The Patient-to-Professional Connection
 
-This creates a simple recruiter-friendly dashboard metric.
+One reason this project matters to me is that patients usually experience the **result** of an operational habit, not the internal process name.
 
----
+A patient may never know that the underlying issue involved data integrity, handoff ownership, documentation readiness, or an unresolved authorization requirement. They may only know that they have to call again, send information again, wait longer, or figure out why the next step did not happen when they expected it to.
 
-## Key Simulated Findings
+That is why I include **Patient-Centered Workflow** as one of the six categories. I want my operational thinking to stay connected to what the workflow feels like from the other side.
 
-The simulated audit shows that the highest-risk areas are:
+## 30-Day Improvement Exercise
 
-- Data Integrity
-- Compliance Readiness
-- Cross-Functional Communication
+The app includes a simulated 30-day improvement plan:
 
-These habits affect whether insurance verification, authorization requirements, referral readiness, documentation support, and billing readiness are handled before the visit.
-
-Weak habits in these areas may create:
-
-- Eligibility errors
-- Authorization delays
-- Preventable denials
-- Patient confusion
-- Staff rework
-- Revenue cycle friction
-- Documentation gaps
-- Claim readiness problems
-
----
-
-## 30-Day Improvement Plan
-
-| Timeline | Action | Purpose |
+| Timeline | Practice Action | Why I included it |
 |---|---|---|
-| Week 1 | Review top three workflow risks | Identify where the process first loses control |
-| Week 1 | Create front-end checklist | Standardize documentation and verification |
-| Week 2 | Map communication handoffs | Reduce department-to-department breakdowns |
-| Week 2 | Create patient instruction script | Improve patient-centered communication |
-| Week 3 | Track repeated errors | Find patterns causing rework and denials |
-| Week 4 | Review progress and update workflow | Build continuous improvement habit |
+| Week 1 | Review the highest-risk categories | Focus attention before trying to change everything at once |
+| Week 1 | Build a front-end checklist | Practice standardizing documentation and verification |
+| Week 2 | Map handoffs | Look for unclear status, ownership, and next steps |
+| Week 2 | Draft a patient instruction script | Practice clearer patient-facing communication |
+| Week 3 | Track repeated errors | Look for patterns instead of isolated corrections |
+| Week 4 | Review the findings again | Practice continuous-improvement thinking |
 
----
+This is a learning exercise, not an implementation plan for a real healthcare organization.
 
-## Skills Demonstrated
+## How It Fits in My Portfolio
 
-This simulated project demonstrates:
+The Habit Audit is the final cross-cutting project in the workflow path I use across my portfolio:
 
-- Healthcare operations thinking
-- Patient access workflow analysis
-- Prior authorization risk awareness
-- Revenue cycle readiness
-- Denial prevention thinking
-- Documentation workflow review
-- Data integrity awareness
-- Quality improvement thinking
-- Compliance readiness awareness
-- Dashboard design
-- Simulated data analysis
-- Professional communication
-- AI-supported workflow analysis
-- Patient-to-professional perspective
+**EVIS → PARCS → DPIS → SBI → Habit Audit**
 
----
+The first projects follow particular workflow problems. The Habit Audit steps back and asks whether repeated behaviors in documentation, data integrity, communication, patient preparation, requirement review, and follow-through could be creating the conditions for those problems to recur.
 
-## Student Credibility Statement
+## What This Project Is — and Is Not
 
-I am a BSHA candidate at the University of Phoenix building healthcare operations credibility through coursework, simulated portfolio projects, patient-to-professional perspective, and practical study of patient access, prior authorization, revenue cycle, denial prevention, documentation workflow, quality improvement, and health informatics.
+This is a **student-developed educational portfolio project**.
 
-This project does not represent formal healthcare employment experience. It is a student portfolio project designed to demonstrate how I think through healthcare workflow risk honestly and professionally.
+- All scenarios, scores, findings, and recommendations are simulated.
+- No protected health information (PHI) is used.
+- No real patient, payer, employer, claim, EHR, or healthcare organization data is used.
+- The scoring model has not been clinically, operationally, legally, or statistically validated.
+- The project does not represent a formal compliance assessment, audit, accreditation review, or quality certification.
+- It does not represent formal healthcare employment experience.
+- It has not been implemented in a healthcare organization.
+- I do not claim that it has reduced denials, improved reimbursement, reduced staff workload, improved compliance, or changed patient outcomes.
 
----
+I want the project to show how I am learning to organize a workflow problem, ask better questions, create a simple review method, and communicate improvement opportunities without overstating what a student project can prove.
 
-## Recruiter Summary
+## Career Direction
 
-I created this simulated project to show how I think through healthcare operations problems before they become downstream revenue cycle, denial, patient access, or staff workload issues.
+I am building toward entry-level remote work in patient access and healthcare operations, including eligibility verification, prior authorization support, revenue cycle support, denial prevention, documentation workflow support, and related operational roles.
 
-The Healthcare Operations Habit Audit™ uses simulated data to evaluate operational habits that affect workflow reliability, denial prevention, documentation quality, patient access, and staff rework.
+Longer term, I am interested in healthcare operations analysis, workflow improvement, health information systems, analytics, and responsible AI governance in healthcare.
 
-This project demonstrates my ability to organize workflow problems, create a basic scoring model, interpret operational risk, design dashboard metrics, and communicate improvement opportunities clearly as a BSHA student.
+## Connect
+
+- [Healthcare Operations Portfolio Hub](https://healthcare-operations-portfolio-hub.vercel.app/)
+- [LinkedIn](https://www.linkedin.com/in/kori-pickle)
+- [GitHub profile](https://github.com/koripickle1101-TN)
+
+Created by Kori Pickle. Student-developed portfolio project. Simulated data only. No PHI.
