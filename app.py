@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="Healthcare Operations Habit Audit | Simulated | No PHI",
-    page_icon="📊",
+    page_title="Healthcare Operations Habit Audit | Student Portfolio",
+    page_icon="📋",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -11,166 +11,234 @@ st.set_page_config(
 TENNESSEE_ORANGE = "#FF8200"
 BLACK = "#000000"
 WHITE = "#FFFFFF"
+WARM_GRAY = "#F7F3EE"
+LINE_GRAY = "#E8DED2"
+DARK_GRAY = "#2A2623"
 
 st.markdown(
     f"""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap');
+
+    html, body, [class*="css"] {{
+        font-family: 'Inter', sans-serif;
+        color: {BLACK};
+        background: {WHITE};
+    }}
+
     .stApp {{
         background-color: {WHITE};
         color: {BLACK};
     }}
-    h1, h2, h3, h4, h5, h6, p, div, span, label {{
+
+    .block-container {{
+        max-width: 1180px;
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+    }}
+
+    h1, h2, h3 {{
+        font-family: 'Newsreader', Georgia, serif;
         color: {BLACK};
     }}
+
     h1 {{
-        line-height: 1.05;
-        letter-spacing: -0.04em;
+        line-height: .95;
+        letter-spacing: -.035em;
     }}
+
     h2 {{
-        letter-spacing: -0.03em;
+        letter-spacing: -.02em;
     }}
-    .brand-banner {{
-        border: 2px solid {TENNESSEE_ORANGE};
-        padding: 26px;
-        border-radius: 0px;
+
+    .hero {{
+        border: 1px solid {LINE_GRAY};
+        border-radius: 30px;
+        padding: 46px 48px;
         margin-bottom: 24px;
-        background-color: {WHITE};
+        background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 66%, #FFF4EA 100%);
+        box-shadow: 0 14px 40px rgba(0,0,0,.04);
     }}
-    .brand-label {{
+
+    .eyebrow {{
         color: {TENNESSEE_ORANGE};
-        font-weight: 800;
-        letter-spacing: 0.05em;
+        font-weight: 700;
+        letter-spacing: .13em;
         text-transform: uppercase;
-        font-size: 0.84rem;
+        font-size: .78rem;
         margin-bottom: 14px;
     }}
-    .disclaimer-box {{
-        border: 1.5px solid {TENNESSEE_ORANGE};
-        border-left: 8px solid {TENNESSEE_ORANGE};
-        padding: 18px;
-        background-color: {WHITE};
-        margin: 20px 0 34px 0;
-        font-size: 1rem;
-        line-height: 1.55;
+
+    .hero h1 {{
+        font-size: clamp(3rem, 6vw, 5.7rem);
+        max-width: 900px;
+        margin: 0 0 18px 0;
     }}
+
+    .hero p {{
+        max-width: 860px;
+        font-size: 1.03rem;
+        line-height: 1.72;
+        color: {DARK_GRAY};
+    }}
+
+    .integrity-box, .perspective-box {{
+        border-left: 5px solid {TENNESSEE_ORANGE};
+        background: {WARM_GRAY};
+        border-radius: 0 20px 20px 0;
+        padding: 22px 26px;
+        margin: 18px 0 28px 0;
+        line-height: 1.7;
+    }}
+
     .metric-card {{
-        border: 1.5px solid {TENNESSEE_ORANGE};
-        padding: 18px;
-        background-color: {WHITE};
-        min-height: 126px;
+        border: 1px solid {LINE_GRAY};
+        border-radius: 22px;
+        padding: 22px;
+        min-height: 138px;
+        background: {WHITE};
         margin-bottom: 14px;
     }}
+
     .metric-label {{
         color: {TENNESSEE_ORANGE};
-        font-weight: 800;
-        font-size: 0.82rem;
+        font-weight: 700;
+        font-size: .76rem;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+        letter-spacing: .09em;
     }}
+
     .metric-value {{
         color: {BLACK};
-        font-size: 1.85rem;
-        font-weight: 850;
-        margin-top: 8px;
-        line-height: 1.15;
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: 2.05rem;
+        font-weight: 600;
+        margin-top: 10px;
+        line-height: 1.08;
     }}
+
     .risk-box {{
-        border-left: 8px solid {TENNESSEE_ORANGE};
-        padding: 18px 18px 18px 24px;
-        background-color: {WHITE};
-        margin-top: 12px;
-        margin-bottom: 24px;
+        border-left: 5px solid {TENNESSEE_ORANGE};
+        background: {WARM_GRAY};
+        border-radius: 0 20px 20px 0;
+        padding: 20px 24px;
+        margin: 12px 0 20px 0;
+        line-height: 1.65;
     }}
-    .small-note {{
-        font-size: 0.9rem;
-        line-height: 1.5;
+
+    .footer-note {{
+        margin-top: 42px;
+        padding-top: 24px;
+        border-top: 1px solid {LINE_GRAY};
+        font-size: .92rem;
+        line-height: 1.65;
+        color: {DARK_GRAY};
     }}
-    div[data-testid="stSlider"] > div > div > div > div {{
-        background-color: {TENNESSEE_ORANGE} !important;
-    }}
+
     div[data-testid="stSlider"] [role="slider"] {{
         background-color: {TENNESSEE_ORANGE} !important;
         border-color: {TENNESSEE_ORANGE} !important;
     }}
+
     @media (max-width: 768px) {{
-        .brand-banner {{ padding: 16px; }}
-        .metric-value {{ font-size: 1.4rem; }}
+        .hero {{ padding: 30px 24px; }}
+        .metric-value {{ font-size: 1.65rem; }}
     }}
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 categories = {
     "Documentation Accuracy": {
         "default": 3,
-        "finding": "Documentation gaps can weaken authorization readiness, medical necessity support, claim readiness, and denial prevention.",
-        "action": "Create a pre-service documentation readiness checklist before authorization submission or scheduled service."
+        "finding": "When documentation is incomplete or unclear, the next person in the workflow may have to stop, investigate, or ask for information again.",
+        "action": "Practice using a pre-service documentation checklist that confirms the information needed for the next workflow step."
     },
     "Data Integrity": {
         "default": 2,
-        "finding": "Weak data integrity can create eligibility errors, claim corrections, authorization mismatches, and patient billing confusion.",
-        "action": "Standardize insurance verification and demographic accuracy checks before the appointment."
+        "finding": "Inconsistent demographic, insurance, or workflow information may create eligibility rework, authorization mismatches, claim corrections, or patient confusion.",
+        "action": "Practice a structured review of demographic and insurance information before the workflow moves forward."
     },
     "Patient-Centered Workflow": {
         "default": 3,
-        "finding": "Patient communication gaps can create confusion, missed requirements, no-shows, repeat calls, and access friction.",
-        "action": "Create a patient-facing next-step script for authorization, referral, documentation, and visit preparation."
+        "finding": "When patients are not sure what is needed or what happens next, an administrative gap can become repeated calls, missed preparation, delay, or frustration.",
+        "action": "Draft a plain-language patient next-step script for referral, authorization, documentation, and visit preparation."
     },
     "Compliance Readiness": {
         "default": 2,
-        "finding": "Compliance readiness gaps can create authorization delays, referral problems, audit exposure, and payer requirement issues.",
-        "action": "Add an authorization, referral, documentation, and payer requirement review checkpoint before service."
+        "finding": "If referral, authorization, documentation, or payer requirements are not reviewed early, the workflow may carry unresolved risk into later steps.",
+        "action": "Practice using a requirements-review checkpoint before service. This is an educational workflow exercise, not a formal compliance assessment."
     },
     "Cross-Functional Communication": {
         "default": 2,
-        "finding": "Communication gaps between scheduling, registration, authorization, clinical, and billing teams can create rework and downstream claim problems.",
-        "action": "Create a documented handoff field that identifies status, owner, next step, and unresolved risk before the workflow moves forward."
+        "finding": "When status, ownership, next steps, or unresolved issues are not carried across handoffs, the next team may inherit a problem without enough context to resolve it efficiently.",
+        "action": "Practice a handoff structure that records status, owner, next action, and unresolved risk."
     },
     "Continuous Improvement": {
         "default": 3,
-        "finding": "When recurring workflow failures are not tracked, preventable errors continue affecting patients, staff, and revenue cycle readiness.",
-        "action": "Build a weekly workflow issue log to track repeated errors, root causes, and improvement actions."
-    }
+        "finding": "When recurring workflow problems are corrected one case at a time but never reviewed as a pattern, the same friction may continue for patients and staff.",
+        "action": "Use a simple weekly issue log to record repeated problems, likely causes, and follow-up actions."
+    },
 }
 
 risk_mapping = {
-    1: "Critical Risk",
-    2: "High Risk",
-    3: "Moderate Risk",
-    4: "Low Risk",
-    5: "Strong Practice"
+    1: "Critical modeled weakness",
+    2: "High modeled workflow risk",
+    3: "Moderate / inconsistent practice",
+    4: "Mostly reliable modeled practice",
+    5: "Strong modeled practice",
 }
 
 st.markdown(
     """
-    <div class="brand-banner">
-        <div class="brand-label">Simulated KPI Dashboard · Synthetic Data · No PHI</div>
+    <div class="hero">
+        <div class="eyebrow">Healthcare Operations Intelligence Engine™ · Student Portfolio</div>
         <h1>Healthcare Operations Habit Audit™</h1>
-        <p>A simulated workflow risk assessment for patient access, prior authorization, revenue cycle, and denial prevention.</p>
-        <p>Created by Kori Pickle<br>BSHA Candidate, University of Phoenix</p>
-        <p><em>Where healthcare workflows break before patients, staff, and revenue feel the impact.</em></p>
+        <p>
+            I built this simulated audit to study a question that sits across my other portfolio projects:
+            what repeated day-to-day habits can make a healthcare workflow more reliable—or make the same problems keep coming back?
+        </p>
+        <p>
+            As I work toward my Bachelor's of Science degree in Healthcare Administration, I use this app to practice reviewing
+            documentation, data integrity, patient communication, requirement readiness, handoffs, and continuous improvement without
+            presenting student work as professional healthcare employment or a validated audit tool.
+        </p>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 st.markdown(
     """
-    <div class="disclaimer-box">
-        Simulated educational portfolio project only. No PHI, real patient data, payer data, employer data, real claims data, or real healthcare organization data is used. Scores are practice outputs, not employer results.
+    <div class="integrity-box">
+        <strong>Student-developed · simulated · no PHI.</strong><br>
+        This app uses no real patient, payer, employer, claim, EHR, or healthcare organization data. The scoring model is an educational
+        structure I created for practice. It is not a validated healthcare benchmark, formal compliance assessment, accreditation review,
+        legal determination, or prediction of real-world performance.
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
-st.markdown("## Simulated Scenario")
+st.markdown("## Why I Built This")
 st.write(
-    "A simulated healthcare organization is experiencing increased authorization delays, eligibility rework, patient confusion, and preventable claim denials. This audit identifies which daily operational habits may be contributing to downstream workflow risk."
+    "The other projects in my portfolio follow specific workflow problems. This one steps back and asks whether repeated habits in documentation, data quality, communication, patient preparation, requirement review, and follow-through could be creating the conditions for those problems to recur."
 )
 
-st.markdown("## Score the Six Operational Habits")
-st.caption("Score each habit from 1 to 5. Lower scores indicate greater workflow risk.")
+st.markdown(
+    """
+    <div class="perspective-box">
+        <strong>Patient-to-professional perspective:</strong> Patients usually experience the result of an operational habit, not the internal process name. What looks like a documentation, handoff, or data-integrity problem inside the workflow may feel like another call, another request for information, a delayed authorization, a confusing bill, or uncertainty about what happens next.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown("## Score the Six Simulated Workflow Habits")
+st.caption(
+    "Choose a score from 1 to 5 for each category. These scores are educational inputs, not measurements of a real healthcare organization."
+)
 
 scores = {}
 cols = st.columns(2)
@@ -181,49 +249,53 @@ for index, (category, info) in enumerate(categories.items()):
             min_value=1,
             max_value=5,
             value=info["default"],
-            help="1 = Critical Risk, 2 = High Risk, 3 = Moderate Risk, 4 = Low Risk, 5 = Strong Practice"
+            help="1 = Critical modeled weakness, 2 = High modeled risk, 3 = Moderate/inconsistent, 4 = Mostly reliable, 5 = Strong modeled practice",
         )
 
 score_values = list(scores.values())
 average_score = round(sum(score_values) / len(score_values), 2)
-workflow_reliability = round(average_score * 20, 1)
-denial_prevention_readiness = round(
+workflow_practice_score = round(average_score * 20, 1)
+denial_prevention_practice = round(
     (
         scores["Documentation Accuracy"]
         + scores["Data Integrity"]
         + scores["Compliance Readiness"]
         + scores["Cross-Functional Communication"]
     ) / 4,
-    2
+    2,
 )
-patient_friction_risk_score = round(
+patient_centered_indicator = round(
     (scores["Patient-Centered Workflow"] + scores["Cross-Functional Communication"]) / 2,
-    2
+    2,
 )
 lowest_score = min(score_values)
 lowest_categories = [category for category, score in scores.items() if score == lowest_score]
 improvement_priority = ", ".join(lowest_categories)
 
 if average_score < 2:
-    overall_risk = "Critical Workflow Risk"
+    overall_interpretation = "Critical modeled workflow concern"
 elif average_score < 3:
-    overall_risk = "High Workflow Risk"
+    overall_interpretation = "High modeled workflow concern"
 elif average_score < 4:
-    overall_risk = "Moderate Workflow Risk"
+    overall_interpretation = "Moderate / inconsistent modeled practice"
 elif average_score < 5:
-    overall_risk = "Low Workflow Risk"
+    overall_interpretation = "Mostly reliable modeled practice"
 else:
-    overall_risk = "Strong Operational Habit Maturity"
+    overall_interpretation = "Strong modeled practice"
 
-st.markdown("## Simulated Scoring Dashboard")
+st.markdown("## Student-Designed Scoring View")
+st.caption(
+    "I use these indicators to practice organizing qualitative observations into a consistent review. They are not validated healthcare performance measures."
+)
+
 metric_cols = st.columns(3)
 metric_data = [
     ("Average Habit Score", f"{average_score} / 5"),
-    ("Workflow Reliability Score", f"{workflow_reliability} / 100"),
-    ("Overall Risk Level", overall_risk),
-    ("Denial Prevention Readiness", f"{denial_prevention_readiness} / 5"),
-    ("Patient Friction Risk Indicator", f"{patient_friction_risk_score} / 5"),
-    ("Improvement Priority", improvement_priority),
+    ("Modeled Workflow Practice Score", f"{workflow_practice_score} / 100"),
+    ("Overall Interpretation", overall_interpretation),
+    ("Denial-Prevention Practice Indicator", f"{denial_prevention_practice} / 5"),
+    ("Patient-Centered Workflow Indicator", f"{patient_centered_indicator} / 5"),
+    ("Lowest-Scoring Review Area", improvement_priority),
 ]
 
 for i, (label, value) in enumerate(metric_data):
@@ -235,51 +307,75 @@ for i, (label, value) in enumerate(metric_data):
                 <div class="metric-value">{value}</div>
             </div>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
 
-st.markdown("## Audit Results Table")
+st.markdown("## Audit Results")
 results_df = pd.DataFrame(
     [
         {
             "Category": category,
             "Score": score,
-            "Risk Level": risk_mapping[score],
-            "Downstream Risk": categories[category]["finding"],
-            "Prevention Action": categories[category]["action"],
+            "Educational Interpretation": risk_mapping[score],
+            "Why I Would Review It": categories[category]["finding"],
+            "Practice Action": categories[category]["action"],
         }
         for category, score in scores.items()
     ]
 )
 st.dataframe(results_df, use_container_width=True, hide_index=True)
 
-st.markdown("## Key Risk Finding")
+st.markdown("## Where I Would Look First")
+st.write(
+    "The lowest-scoring category is not automatically the root cause of a real workflow problem. In this learning model, it simply tells me where I would start asking more questions and looking for evidence."
+)
+
 for category in lowest_categories:
     st.markdown(
         f"""
         <div class="risk-box">
             <h3>{category}</h3>
-            <p>{categories[category]['finding']}</p>
-            <p>Recommended Action: {categories[category]['action']}</p>
+            <p><strong>Why I would review it:</strong> {categories[category]['finding']}</p>
+            <p><strong>Practice action:</strong> {categories[category]['action']}</p>
         </div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
 
-st.markdown("## 30-Day Improvement Plan")
+st.markdown("## 30-Day Improvement Exercise")
+st.caption("This is a simulated learning plan, not an implementation plan for a real healthcare organization.")
+
 plan_df = pd.DataFrame(
     [
-        {"Timeline": "Week 1", "Action": "Review top three workflow risks", "Purpose": "Identify where the process first loses control"},
-        {"Timeline": "Week 1", "Action": "Create front-end checklist", "Purpose": "Standardize documentation and verification"},
-        {"Timeline": "Week 2", "Action": "Map communication handoffs", "Purpose": "Reduce department-to-department breakdowns"},
-        {"Timeline": "Week 2", "Action": "Create patient instruction script", "Purpose": "Improve patient-centered communication"},
-        {"Timeline": "Week 3", "Action": "Track repeated errors", "Purpose": "Find patterns causing rework and denials"},
-        {"Timeline": "Week 4", "Action": "Review progress and update workflow", "Purpose": "Build continuous improvement habit"},
+        {"Timeline": "Week 1", "Practice Action": "Review the three lowest-scoring areas", "Purpose": "Focus the investigation before trying to change everything at once"},
+        {"Timeline": "Week 1", "Practice Action": "Build a front-end checklist", "Purpose": "Practice standardizing documentation and verification"},
+        {"Timeline": "Week 2", "Practice Action": "Map workflow handoffs", "Purpose": "Look for unclear status, ownership, and next steps"},
+        {"Timeline": "Week 2", "Practice Action": "Draft a patient next-step script", "Purpose": "Practice clearer patient-facing communication"},
+        {"Timeline": "Week 3", "Practice Action": "Track repeated workflow issues", "Purpose": "Look for patterns instead of isolated corrections"},
+        {"Timeline": "Week 4", "Practice Action": "Review the scores and notes again", "Purpose": "Practice continuous-improvement thinking"},
     ]
 )
 st.dataframe(plan_df, use_container_width=True, hide_index=True)
 
-st.markdown("## Portfolio Positioning")
+st.markdown("## What I Am Practicing Through This App")
 st.write(
-    "This simulated app demonstrates how operational habits can be scored to identify workflow risk before it becomes a patient access delay, authorization gap, denial risk, documentation problem, or staff rework issue. It is designed as a student portfolio project and does not represent formal healthcare employment experience."
+    "I use this project to practice recognizing workflow patterns, organizing qualitative observations, building a simple scoring model, connecting operational findings to patient and staff impact, and communicating improvement ideas without overstating what simulated data can prove."
+)
+
+st.markdown("## How It Fits in My Portfolio")
+st.write(
+    "EVIS follows eligibility and intake risk. PARCS follows prior authorization workflow risk. DPIS works backward from denial and claim-readiness risk. SBI looks for the first cross-workflow control loss. The Habit Audit sits across all of them and asks whether repeated operational habits could be making those risks more likely."
+)
+
+st.markdown(
+    """
+    <div class="footer-note">
+        <strong>Created by Kori Pickle</strong><br>
+        Student-developed healthcare operations portfolio project · Synthetic data only · No PHI · Not employer experience · Not a formal compliance, clinical, coding, payer, legal, or accreditation assessment.<br><br>
+        Portfolio Hub: https://healthcare-operations-portfolio-hub.vercel.app/<br>
+        LinkedIn: https://www.linkedin.com/in/kori-pickle<br>
+        GitHub: https://github.com/koripickle1101-TN
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
