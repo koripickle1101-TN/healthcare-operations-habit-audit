@@ -157,9 +157,42 @@ st.markdown(
         border-bottom: 2px solid {TENNESSEE_ORANGE};
     }}
 
+    .metric-value {{
+        overflow-wrap: anywhere;
+        word-break: normal;
+        hyphens: none;
+    }}
+    .result-card {{
+        border: 1px solid {LINE_GRAY};
+        border-left: 4px solid {TENNESSEE_ORANGE};
+        border-radius: 0 16px 16px 0;
+        padding: 18px 20px;
+        margin: 12px 0;
+        background: {WHITE};
+        overflow-wrap: break-word;
+    }}
+    .result-card h3 {{ margin: 0 0 10px; font-size: 1.35rem; line-height: 1.25; }}
+    .result-card p {{ margin: 8px 0; line-height: 1.6; }}
     @media (max-width: 768px) {{
-        .hero {{ padding: 30px 24px; }}
-        .metric-value {{ font-size: 1.65rem; }}
+        .block-container {{ padding: 1rem 1rem 2rem; }}
+        .hero {{ padding: 24px 20px; border-radius: 18px; }}
+        .hero h1 {{ font-size: 2.15rem; line-height: 1.1; }}
+        .hero p, .integrity-box, .perspective-box, .risk-box, .result-card {{ font-size: 1rem; line-height: 1.6; }}
+        .metric-card {{ padding: 18px; min-height: 0; }}
+        .metric-label {{ font-size: .82rem; letter-spacing: .035em; }}
+        .metric-value {{ font-size: 1.65rem; line-height: 1.2; overflow-wrap: anywhere; }}
+        .eyebrow {{ font-size: .72rem; letter-spacing: .055em; }}
+        div[data-testid="stHorizontalBlock"] {{ flex-wrap: wrap !important; }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {{
+            flex: 1 1 100% !important;
+            width: 100% !important;
+            min-width: 0 !important;
+        }}
+        div[data-testid="stSlider"] {{ padding-bottom: .5rem; }}
+        div[data-testid="stSlider"] [role="slider"] {{ min-width: 22px; min-height: 22px; }}
+    }}
+    @media (prefers-reduced-motion: reduce) {{
+        *, *::before, *::after {{ scroll-behavior: auto !important; }}
     }}
     </style>
     """,
@@ -340,7 +373,20 @@ results_df = pd.DataFrame(
         for category, score in scores.items()
     ]
 )
-st.dataframe(results_df, use_container_width=True, hide_index=True)
+# Responsive, fully readable results; display only, scoring and source data unchanged.
+for _, result in results_df.iterrows():
+    st.markdown(
+        f"""
+        <div class="result-card">
+            <h3>{result['Category']}</h3>
+            <p><strong>Score:</strong> {result['Score']} / 5</p>
+            <p><strong>Educational interpretation:</strong> {result['Educational Interpretation']}</p>
+            <p><strong>Why I would review it:</strong> {result['Why I Would Review It']}</p>
+            <p><strong>Practice action:</strong> {result['Practice Action']}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("## Where I Would Look First")
 st.write(
@@ -372,7 +418,18 @@ plan_df = pd.DataFrame(
         {"Timeline": "Week 4", "Practice Action": "Review the scores and notes again", "Purpose": "Practice continuous-improvement thinking"},
     ]
 )
-st.dataframe(plan_df, use_container_width=True, hide_index=True)
+# Full-width cards avoid truncated plan details on narrow screens.
+for _, step in plan_df.iterrows():
+    st.markdown(
+        f"""
+        <div class="result-card">
+            <h3>{step['Timeline']}</h3>
+            <p><strong>Practice action:</strong> {step['Practice Action']}</p>
+            <p><strong>Purpose:</strong> {step['Purpose']}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("## What I Am Practicing Through This App")
 st.write(
