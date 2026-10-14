@@ -158,7 +158,7 @@ st.markdown(
     }}
 
     .metric-value {{
-        overflow-wrap: anywhere;
+        overflow-wrap: normal;
         word-break: normal;
         hyphens: none;
     }}
@@ -180,7 +180,7 @@ st.markdown(
         .hero p, .integrity-box, .perspective-box, .risk-box, .result-card {{ font-size: 1rem; line-height: 1.6; }}
         .metric-card {{ padding: 18px; min-height: 0; }}
         .metric-label {{ font-size: .82rem; letter-spacing: .035em; }}
-        .metric-value {{ font-size: 1.65rem; line-height: 1.2; overflow-wrap: anywhere; }}
+        .metric-value {{ font-size: 1.65rem; line-height: 1.2; overflow-wrap: normal; }}
         .eyebrow {{ font-size: .72rem; letter-spacing: .055em; }}
         div[data-testid="stHorizontalBlock"] {{ flex-wrap: wrap !important; }}
         div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {{
