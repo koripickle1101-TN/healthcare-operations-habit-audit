@@ -61,7 +61,10 @@ st.markdown(
     }}
 
     .eyebrow {{
-        color: {TENNESSEE_ORANGE};
+        color: {BLACK};
+        display: inline-block;
+        border-bottom: 3px solid {TENNESSEE_ORANGE};
+        padding-bottom: 4px;
         font-weight: 700;
         letter-spacing: .13em;
         text-transform: uppercase;
@@ -101,7 +104,9 @@ st.markdown(
     }}
 
     .metric-label {{
-        color: {TENNESSEE_ORANGE};
+        color: {BLACK};
+        border-left: 3px solid {TENNESSEE_ORANGE};
+        padding-left: 8px;
         font-weight: 700;
         font-size: .76rem;
         text-transform: uppercase;
@@ -138,6 +143,18 @@ st.markdown(
     div[data-testid="stSlider"] [role="slider"] {{
         background-color: {TENNESSEE_ORANGE} !important;
         border-color: {TENNESSEE_ORANGE} !important;
+    }}
+
+    div[data-testid="stSliderThumbValue"] {{
+        color: {BLACK} !important;
+        font-weight: 700;
+    }}
+
+    .footer-note a {{
+        color: {BLACK};
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 2px solid {TENNESSEE_ORANGE};
     }}
 
     @media (max-width: 768px) {{
@@ -212,7 +229,7 @@ st.markdown(
 st.markdown(
     """
     <div class="integrity-box">
-        <strong>Student-developed · simulated · no PHI.</strong><br>
+        <strong>Student-developed, simulated, educational, no-PHI healthcare operations portfolio project.</strong><br>
         This app uses no real patient, payer, employer, claim, EHR, or healthcare organization data. The scoring model is an educational
         structure I created for practice. It is not a validated healthcare benchmark, formal compliance assessment, accreditation review,
         legal determination, or prediction of real-world performance.
@@ -371,10 +388,10 @@ st.markdown(
     """
     <div class="footer-note">
         <strong>Created by Kori Pickle</strong><br>
-        Student-developed healthcare operations portfolio project · Synthetic data only · No PHI · Not employer experience · Not a formal compliance, clinical, coding, payer, legal, or accreditation assessment.<br><br>
-        Portfolio Hub: https://healthcare-operations-portfolio-hub.vercel.app/<br>
-        LinkedIn: https://www.linkedin.com/in/kori-pickle<br>
-        GitHub: https://github.com/koripickle1101-TN
+        Student-developed, simulated, educational, no-PHI healthcare operations portfolio project. Synthetic data only · Not employer experience · Not a formal compliance, clinical, coding, payer, legal, or accreditation assessment.<br><br>
+        <a href="https://healthcare-operations-portfolio-hub.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio Hub</a> ·
+        <a href="https://www.linkedin.com/in/kori-pickle" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+        <a href="https://github.com/koripickle1101-TN" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
     """,
     unsafe_allow_html=True,

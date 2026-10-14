@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Healthcare Operations Habit Audit™ | Interactive Browser Demo | Kori Pickle</title>
+  <meta name="description" content="Student-developed, simulated, educational, no-PHI healthcare operations portfolio project. Browser-run demo of the Healthcare Operations Habit Audit (no server, no sleep screen)." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.11.0/build/stlite.css" />
+  <style>
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:#fff;color:#000}
+    .loader{position:fixed;z-index:2147483000;top:8vh;left:50%;transform:translateX(-50%);width:min(760px,calc(100% - 32px));box-sizing:border-box;background:#fff;padding:28px;border:1px solid #E8DED2;border-left:6px solid #FF8200;border-radius:0 20px 20px 0;box-shadow:0 14px 40px rgba(0,0,0,.08)}
+    .loader h1{font-size:1.6rem;margin:0 0 10px}
+    .loader p{line-height:1.6;margin:8px 0}
+    .loader a{color:#000;font-weight:700;border-bottom:2px solid #FF8200;text-decoration:none}
+    .eyebrow{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-bottom:3px solid #FF8200;padding-bottom:3px}
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader" role="status" aria-live="polite">
+      <div class="eyebrow">Healthcare Operations Intelligence Engine™</div>
+      <h1>Loading the interactive demo in your browser…</h1>
+      <p><strong>Student-developed, simulated, educational, no-PHI healthcare operations portfolio project.</strong></p>
+      <p>Loading the interactive demo in your browser, this can take 15–30 seconds on first visit (about 25&nbsp;MB download; slower connections may take longer). It runs the same <code>app.py</code> as the Streamlit app, with no server and no sleep screen. Nothing you enter leaves your device.</p>
+      <p>Prefer not to wait? <a href="https://github.com/koripickle1101-TN/healthcare-operations-habit-audit#screenshots">View screenshots instead</a> ·
+         <a href="https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/">Open the Streamlit app</a> (may need a one-click wake) ·
+         <a href="https://healthcare-operations-portfolio-hub.vercel.app/">Portfolio Hub</a></p>
+  </div>
+  <div id="root"></div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.11.0/build/stlite.js";
+    // Single source of truth: load the SAME app.py and theme used by Streamlit Community Cloud.
+    const fail = (msg) => { const l = document.getElementById("loader"); if (l) l.querySelector("h1").textContent = "The interactive demo could not load"; const p=document.createElement("p"); p.textContent = msg + " Please use the screenshots or the Streamlit app links above."; if (l) l.appendChild(p); };
+    const [app, cfg] = await Promise.all([
+      fetch("../app.py").then(r => { if (!r.ok) throw new Error("app.py " + r.status); return r.text(); }).catch(e => { fail("Could not fetch app.py (" + e.message + ")."); throw e; }),
+      fetch("../.streamlit/config.toml").then(r => r.ok ? r.text() : "").catch(() => "")
+    ]);
+    mount({
+      requirements: ["pandas"],
+      entrypoint: "app.py",
+      files: { "app.py": app, ".streamlit/config.toml": cfg }
+    }, document.getElementById("root"));
+    // Keep the branded explanation visible until the scoring view has rendered.
+    const done = () => { const l = document.getElementById("loader"); if (l) l.remove(); };
+    const obs = new MutationObserver(() => { if (document.querySelector(".metric-card")) { done(); obs.disconnect(); } });
+    obs.observe(document.body, { childList: true, subtree: true });
+  </script>
+</body>
+</html>
