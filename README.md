@@ -1,5 +1,8 @@
 # Healthcare Operations Habit Audit™
 
+> **Student-developed, simulated, educational, no-PHI healthcare operations portfolio project.**
+> Part of the Healthcare Operations Intelligence Engine™ portfolio by Kori Pickle.
+
 I built the Healthcare Operations Habit Audit as a student-developed healthcare operations project to study a broader question than any single eligibility, authorization, or denial case: **what recurring day-to-day habits can make a workflow more reliable—or make the same problems keep coming back?**
 
 As I work toward my Bachelor's of Science degree in Healthcare Administration at the University of Phoenix, I am learning that workflow problems are not always caused by one dramatic failure. Sometimes the risk builds through smaller patterns: information that is not verified consistently, documentation that is not ready for the next step, unclear handoffs, patients who are not sure what they need to do next, or recurring problems that are corrected case by case without being studied as a pattern.
@@ -8,9 +11,32 @@ From the patient side, those internal habits can become very visible. They can m
 
 This project gives me a way to practice looking at those patterns across the workflow instead of treating every problem as an isolated event.
 
-## Live Streamlit App
+## How to View This Project
 
-[Open the Healthcare Operations Habit Audit](https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/)
+| Option | Link | What to expect |
+|---|---|---|
+| **Browser demo (recommended)** | [Open Interactive Demo](https://koripickle1101-tn.github.io/healthcare-operations-habit-audit/demo/) | Runs the same `app.py` in your browser, so there is no server and no sleep screen. First visit downloads about 25 MB and can take 15–30 seconds (longer on slow connections). **This address works only after GitHub Pages is enabled for this repository.** |
+| Streamlit Community Cloud app | [Open the Streamlit app](https://healthcare-operations-habit-audit-emd56fbkjuufecaftwypwg.streamlit.app/) | Free hosting sleeps after 12 hours without traffic. If you see “This app has gone to sleep,” click **Yes, get this app back up!** and wait about 30 seconds. |
+| Screenshots | [Jump to screenshots](#screenshots) | A no-wait preview of the scoring view and results. |
+
+## Screenshots
+
+All values below are the default **simulated** demo scores. No real organization was assessed.
+
+| Overview | Scoring the six habits |
+|---|---|
+| ![Habit Audit overview with student/simulated/no-PHI disclaimer](docs/screenshots/01-overview-desktop.svg) | ![Six 1–5 sliders for the simulated workflow habits](docs/screenshots/02-scoring-desktop.svg) |
+| **Student-designed indicators and results table** | **Mobile view** |
+| ![Indicators and audit results table](docs/screenshots/03-results-desktop.svg) | ![Mobile overview](docs/screenshots/04-overview-mobile.svg) |
+
+Screenshots were captured from the Streamlit version of this branch using the default simulated scores. They are stored as SVG files that wrap the original PNG captures.
+
+### 60-second walkthrough
+1. Read the disclaimer box. Everything here is simulated and educational.
+2. Move any slider (1 = critical modeled weakness, 5 = strong modeled practice).
+3. Watch the six indicators recalculate. With the defaults, the average is **2.5 / 5** and the modeled workflow practice score is **50.0 / 100**.
+4. Scroll to **Where I Would Look First** to see the lowest-scoring area(s) and the practice action for each.
+5. Review the **30-Day Improvement Exercise**, a simulated learning plan.
 
 ## Why I Built This Project
 
@@ -52,7 +78,7 @@ Each category is scored from **1 to 5**:
 |---:|---|
 | 1 | Critical modeled weakness |
 | 2 | High modeled workflow risk |
-| 3 | Inconsistent / moderate modeled risk |
+| 3 | Moderate / inconsistent practice |
 | 4 | Mostly reliable modeled practice |
 | 5 | Strong modeled practice |
 
@@ -72,7 +98,7 @@ For example, the default demo scores are:
 With those defaults:
 
 - Average habit score = **2.5 / 5**
-- Modeled workflow practice score = **50 / 100**
+- Modeled workflow practice score = **50.0 / 100**
 - Denial-prevention practice indicator = **2.25 / 5**
 - Patient-centered workflow indicator = **2.5 / 5**
 
@@ -106,12 +132,12 @@ The app includes a simulated 30-day improvement plan:
 
 | Timeline | Practice Action | Why I included it |
 |---|---|---|
-| Week 1 | Review the highest-risk categories | Focus attention before trying to change everything at once |
+| Week 1 | Review the three lowest-scoring areas | Focus the investigation before trying to change everything at once |
 | Week 1 | Build a front-end checklist | Practice standardizing documentation and verification |
-| Week 2 | Map handoffs | Look for unclear status, ownership, and next steps |
-| Week 2 | Draft a patient instruction script | Practice clearer patient-facing communication |
-| Week 3 | Track repeated errors | Look for patterns instead of isolated corrections |
-| Week 4 | Review the findings again | Practice continuous-improvement thinking |
+| Week 2 | Map workflow handoffs | Look for unclear status, ownership, and next steps |
+| Week 2 | Draft a patient next-step script | Practice clearer patient-facing communication |
+| Week 3 | Track repeated workflow issues | Look for patterns instead of isolated corrections |
+| Week 4 | Review the scores and notes again | Practice continuous-improvement thinking |
 
 This is a learning exercise, not an implementation plan for a real healthcare organization.
 
@@ -150,4 +176,19 @@ Longer term, I am interested in healthcare operations analysis, workflow improve
 - [LinkedIn](https://www.linkedin.com/in/kori-pickle)
 - [GitHub profile](https://github.com/koripickle1101-TN)
 
-Created by Kori Pickle. Student-developed portfolio project. Simulated data only. No PHI.
+## Running Locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+To try the browser demo locally, serve the repository root over HTTP (for example `python -m http.server 8000`) and open `http://localhost:8000/demo/`. Opening the file directly will not work because the page fetches `../app.py`.
+
+The browser demo in `demo/index.html` uses [stlite](https://github.com/whitphx/stlite) (Apache-2.0) to run the same `app.py` on Pyodide. Both versions read the brand theme from `.streamlit/config.toml`. The demo fetches `app.py` at load time; there is no duplicated copy.
+
+### Dependency ranges
+
+`requirements.txt` uses compatible ranges (`streamlit>=1.40,<2`, `pandas>=2.2,<4`) instead of exact pins. The newest releases (Streamlit 1.66 / pandas 3.0) require Python 3.11 or newer, and this app's Python version on Streamlit Community Cloud has not been confirmed. The ranges let pip choose versions that match whatever Python the app uses. After confirming the Python version in the app's Cloud settings, exact pins can be added.
+
+Created by Kori Pickle. Student-developed, simulated, educational, no-PHI healthcare operations portfolio project.

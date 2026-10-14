@@ -1,2 +1,7 @@
-streamlit
-pandas
+# Bounded ranges (safe for any Community Cloud Python >=3.9).
+# Tested locally 2026-10-14 with streamlit 1.66.0 + pandas 3.0.6 on Python 3.13.
+# After confirming the app's Python is >=3.11 in Community Cloud settings, you may pin exactly:
+#   streamlit==1.66.0
+#   pandas==3.0.6
+streamlit>=1.40,<2
+pandas>=2.2,<4

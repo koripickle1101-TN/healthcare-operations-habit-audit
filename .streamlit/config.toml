@@ -1,0 +1,11 @@
+# Brand theme for Healthcare Operations Intelligence Engine(TM).
+# primaryColor drives slider track/thumb (currently Streamlit default red #FF4B4B).
+[theme]
+base = "light"
+primaryColor = "#FF8200"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F7F3EE"
+textColor = "#000000"
+
+[client]
+toolbarMode = "viewer"
