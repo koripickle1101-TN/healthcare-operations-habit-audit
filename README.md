@@ -1,5 +1,7 @@
 # Healthcare Operations Habit Audit™
 
+**Audit interpretation:** The six habit ratings are fictional subjective learning inputs. Calculated indicators are educational illustrations, not validated organizational audits, compliance findings, or measured improvements. Review EVIS, PARCS, or DPIS for domain-specific queue evidence.
+
 ## Recruiter Review — 30-Second Snapshot
 
 **Project type:** Student-developed, simulated, educational, no-PHI; not professional healthcare employment.
