@@ -1,5 +1,28 @@
 # Healthcare Operations Habit Audit™
 
+## Recruiter Review — 30-Second Snapshot
+
+**Project type:** Student-developed, simulated, educational, no-PHI; not professional healthcare employment.
+
+- **Operational problem:** Recurring documentation, data-quality, and handoff habits can create repeat operational problems.
+- **Student approach:** I built a simulated six-category workflow habit scoring exercise and improvement-plan demonstration.
+- **Inspect the evidence:** Interactive educational scoring tool, sample results, screenshots, and 30-day practice plan.
+- **Entry-level skills illustrated:** Basic dashboard interpretation, operational documentation, patient-centered thinking, and improvement planning.
+- **Assumptions and limitations:** Scores are educational and subjective, not a real organizational audit, validated assessment, or compliance determination.
+
+### Simple Workflow and Handoff View
+
+```text
+Select habit → Review example evidence → Assign practice score → Identify improvement → Plan follow-up → Reassess simulated score.
+```
+
+**Control question:** Where did the workflow first lose control? Each stage is a hypothetical administrative review step, not a clinical, payer, or compliance authorization.
+
+**Privacy and equity considerations:** All examples are fictional. In actual work, patient identifiers and coverage details require approved access and minimum-necessary handling. Language access, disability accommodations, and timely patient communication may affect safe administrative follow-up; this project does not measure those outcomes.
+
+---
+
+
 > **Student-developed, simulated, educational, no-PHI healthcare operations portfolio project.**
 > Part of the Healthcare Operations Intelligence Engine™ portfolio by Kori Pickle.
 
