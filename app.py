@@ -157,9 +157,42 @@ st.markdown(
         border-bottom: 2px solid {TENNESSEE_ORANGE};
     }}
 
+    .metric-value {{
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }}
+    .result-card {{
+        border: 1px solid {LINE_GRAY};
+        border-left: 4px solid {TENNESSEE_ORANGE};
+        border-radius: 0 16px 16px 0;
+        padding: 18px 20px;
+        margin: 12px 0;
+        background: {WHITE};
+        overflow-wrap: break-word;
+    }}
+    .result-card h3 {{ margin: 0 0 10px; font-size: 1.35rem; line-height: 1.25; }}
+    .result-card p {{ margin: 8px 0; line-height: 1.6; }}
     @media (max-width: 768px) {{
-        .hero {{ padding: 30px 24px; }}
-        .metric-value {{ font-size: 1.65rem; }}
+        .block-container {{ padding: 1rem 1rem 2rem; }}
+        .hero {{ padding: 24px 20px; border-radius: 18px; }}
+        .hero h1 {{ font-size: 2.15rem; line-height: 1.1; }}
+        .hero p, .integrity-box, .perspective-box, .risk-box, .result-card {{ font-size: 1rem; line-height: 1.6; }}
+        .metric-card {{ padding: 18px; min-height: 0; }}
+        .metric-label {{ font-size: .82rem; letter-spacing: .035em; }}
+        .metric-value {{ font-size: 1.65rem; line-height: 1.2; overflow-wrap: normal; }}
+        .eyebrow {{ font-size: .72rem; letter-spacing: .055em; }}
+        div[data-testid="stHorizontalBlock"] {{ flex-wrap: wrap !important; }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {{
+            flex: 1 1 100% !important;
+            width: 100% !important;
+            min-width: 0 !important;
+        }}
+        div[data-testid="stSlider"] {{ padding-bottom: .5rem; }}
+        div[data-testid="stSlider"] [role="slider"] {{ min-width: 22px; min-height: 22px; }}
+    }}
+    @media (prefers-reduced-motion: reduce) {{
+        *, *::before, *::after {{ scroll-behavior: auto !important; }}
     }}
     </style>
     """,
@@ -340,7 +373,20 @@ results_df = pd.DataFrame(
         for category, score in scores.items()
     ]
 )
-st.dataframe(results_df, use_container_width=True, hide_index=True)
+# Responsive, fully readable results; display only, scoring and source data unchanged.
+for _, result in results_df.iterrows():
+    st.markdown(
+        f"""
+        <div class="result-card">
+            <h3>{result['Category']}</h3>
+            <p><strong>Score:</strong> {result['Score']} / 5</p>
+            <p><strong>Educational interpretation:</strong> {result['Educational Interpretation']}</p>
+            <p><strong>Why I would review it:</strong> {result['Why I Would Review It']}</p>
+            <p><strong>Practice action:</strong> {result['Practice Action']}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("## Where I Would Look First")
 st.write(
@@ -372,7 +418,18 @@ plan_df = pd.DataFrame(
         {"Timeline": "Week 4", "Practice Action": "Review the scores and notes again", "Purpose": "Practice continuous-improvement thinking"},
     ]
 )
-st.dataframe(plan_df, use_container_width=True, hide_index=True)
+# Full-width cards avoid truncated plan details on narrow screens.
+for _, step in plan_df.iterrows():
+    st.markdown(
+        f"""
+        <div class="result-card">
+            <h3>{step['Timeline']}</h3>
+            <p><strong>Practice action:</strong> {step['Practice Action']}</p>
+            <p><strong>Purpose:</strong> {step['Purpose']}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown("## What I Am Practicing Through This App")
 st.write(
@@ -410,7 +467,6 @@ st.markdown(
                 <a href="https://github.com/koripickle1101-TN" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.35-1.18-3.35-1.18-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.82.09-.64.35-1.08.64-1.33-2.21-.25-4.54-1.11-4.54-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.58 9.58 0 0 1 12 6.47c.85 0 1.7.12 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.91.68 1.84v2.72c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>GitHub</a>
             </div>
         </div>
-
         <strong>Created by Kori Pickle</strong><br>
         Student-developed, simulated, educational, no-PHI healthcare operations portfolio project. Synthetic data only · Not employer experience · Not a formal compliance, clinical, coding, payer, legal, or accreditation assessment.<br><br>
         <a href="https://healthcare-operations-portfolio-hub.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio Hub</a> ·
